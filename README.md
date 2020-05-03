@@ -6,4 +6,7 @@ The array can be resized to any 2-D matrix in the code but the numbers has to be
 
 In the array 0 represents the "-" or the swap tile.
 
-The algorithm calculated the hamiltonian distance and tries to obtain the solution to the given probelm.
+The code uses two heuristic values: 1) Gives a constant value 0.
+                                    2) calculated the hamiltonian distance and tries to obtain the solution to the given probelm.
+
+The value for "heuristic_value_fun"  can input as 0(for constant function) or 1(for Manhattan distances function)
