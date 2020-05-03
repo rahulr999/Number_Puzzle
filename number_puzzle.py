@@ -15,12 +15,14 @@ for x in range(len(array)):   #Initalising the values of index value of the swap
             j=y
     sol.append(sl)
 def heuristic_val(array):  #Calculates the heuristic for a given state and to check if the solution has been met
-    global sol
+    global sol,heur
     val = 0
     for i in range(len(array)):
         for j in range(len(array[1])):
             if array[i][j] != sol[i][j] and array[i][j] != 0:
                 val += abs(array[i][j] - ((len(sol)*i)+j))
+    if val == 0: return -1
+    if heur == 0: return 0
     return val
 def heuristic_fun(list_array): #to explore the new states
     global finish,prev_array
@@ -29,7 +31,7 @@ def heuristic_fun(list_array): #to explore the new states
         del list_array[0]
         i = array[0][0]
         j = array[0][1]
-        if i < len(sol)-1: #
+        if i < len(sol)-1: 
             arr = copy.deepcopy(array[1])
             temp = arr[i][j]
             arr[i][j] = arr[i+1][j]
@@ -62,7 +64,8 @@ def heuristic_fun(list_array): #to explore the new states
                 prev_array.append(arr)
                 list_array.append([[i,j-1],arr,array[2]+["Left"],heuristic_val(arr)+(len(array[2])+1)*3])
         list_array.sort(key = lambda x: x[3]) #Sorting the list based on the heuristic value
-        if heuristic_val(list_array[0][1]) == 0: #To check if the solution has been reached
+        #print(list_array[0])  # we can use this print statement to check number of states explored
+        if heuristic_val(list_array[0][1]) == -1: #To check if the solution has been reached
             finish = 1
             break
     return list_array[0][2]
@@ -74,7 +77,15 @@ def print_mat(array): #printing the list of steps that leades to the solution
             else: st+=str(y)+" "
         print(st)
     print("\n")
-move = heuristic_fun([[[i,j],array,[],9999]]) #calling the heuristic function
+    
+def type_her(graph,start,goal,hstk): #Function to choose the heuristic constant or not
+    global heur,sol
+    heur = hstk
+    sol = goal
+    return heuristic_fun([[start,graph,[],9999]])
+
+
+move = type_her(array,[i,j],sol,1)#calling the heuristic function
 print_mat(array)
 
 for mv in move:
