@@ -20,7 +20,7 @@ def heuristic_val(array):  #Calculates the heuristic for a given state and to ch
     for i in range(len(array)):
         for j in range(len(array[1])):
             if array[i][j] != sol[i][j] and array[i][j] != 0:
-                val += abs(array[i][j] - ((3*i)+j))
+                val += abs(array[i][j] - ((len(sol)*i)+j))
     return val
 def heuristic_fun(list_array): #to explore the new states
     global finish,prev_array
