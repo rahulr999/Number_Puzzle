@@ -84,8 +84,8 @@ def type_her(graph,start,goal,hstk): #Function to choose the heuristic constant 
     sol = goal
     return heuristic_fun([[start,graph,[],9999]])
 
-
-move = type_her(array,[i,j],sol,1)#calling the heuristic function
+heuristic_value_fun = 1 #We can input 0(for constant function) or 1(for Manhattan distances function)
+move = type_her(array,[i,j],sol,heuristic_value_fun)#calling the heuristic function
 print_mat(array)
 
 for mv in move:
