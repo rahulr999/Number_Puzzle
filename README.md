@@ -1,4 +1,4 @@
-# Picture_Puzzle
+# Number_Puzzle
 Heuristic Method to solve a picture puzzle
 Similar to picture puzzle.
 
