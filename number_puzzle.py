@@ -1,8 +1,8 @@
 import copy
 array = [[1,4,2],[6,3,5],[0,7,8]] #array for the input here 0 is assumed to be  "-"
 finish = 0 # Flag to check is a solution has been reached
-list_array = [] #Storing the list of currently explored states
-prev_array = [] #Stroing the list of possible places to prevent recuring tiles to avoid looping
+list_array = [] #Stroing the list of currently explored states
+prev_array = [] #Stroing the list of possible places to prevent recurring tiles to avoid looping
 sol = [] # the actual solution
 cnt = 0
 for x in range(len(array)):   #Initalising the values of index value of the swap tile and the actual solution
