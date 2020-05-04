@@ -1,5 +1,8 @@
 import copy
-array = [[1,4,2],[6,3,5],[0,7,8]] #array for the input here 0 is assumed to be  "-"
+import sys
+inpt = sys.argv[1:10]
+array = [inpt[:3],inpt[3:6],inpt[6:9]]  #array for the input here 0 is assumed to be  "-"
+#array = [[1,4,2],[6,3,5],[0,7,8]] 
 finish = 0 # Flag to check is a solution has been reached
 list_array = [] #Stroing the list of currently explored states
 prev_array = [] #Stroing the list of possible places to prevent recurring tiles to avoid looping
@@ -8,11 +11,13 @@ cnt = 0
 for x in range(len(array)):   #Initalising the values of index value of the swap tile and the actual solution
     sl = []
     for y in range(len(array[0])):
-        sl.append(cnt)
-        cnt+=1
-        if array[x][y] == 0:
+        if array[x][y] == "_":
+            array[x][y] = 0
             i=x
             j=y
+        else:array[x][y] = int(array[x][y])
+        sl.append(cnt)
+        cnt+=1
     sol.append(sl)
 def heuristic_val(array):  #Calculates the heuristic for a given state and to check if the solution has been met
     global sol,heur
@@ -84,8 +89,8 @@ def type_her(graph,start,goal,hstk): #Function to choose the heuristic constant 
     sol = goal
     return heuristic_fun([[start,graph,[],9999]])
 
-heuristic_value_fun = 1 #We can input 0(for constant function) or 1(for Manhattan distances function)
-move = type_her(array,[i,j],sol,heuristic_value_fun)#calling the heuristic function
+
+move = type_her(array,[i,j],sol,1)#calling the heuristic function
 print_mat(array)
 
 for mv in move:
