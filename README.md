@@ -15,4 +15,4 @@ The code can be run as follows:
 
         python number_puzzle.py <3 X 3 matrix in the range of 1-8 and "_" without repetation seperated by space>
         
-To run the more extensive puzzle algorithm we can comment lines 3 and 4, and uncomment line 5 where we can input the value of any matrix for a solution where the values in the matrix are from 1 to n-1 and "_", where n is the multiple of A and B in A X B matrix.
+To run the more extensive puzzle algorithm we can comment lines 3 and 4, and uncomment line 5 where we can input the value of any matrix for a solution where the values in the matrix are from 1 to n-1 and "_", where n is the multiple of A and B in A X B matrix without repetition.
